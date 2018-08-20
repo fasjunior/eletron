@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
+import { MqttService } from '../../mqtt/mqtt.service';
 
 @Component({
   selector: 'top-menu',
@@ -13,9 +14,16 @@ export class TopMenuComponent implements OnInit {
   public isReconnecting: boolean;
   private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  constructor() { }
+  constructor(private mqttService: MqttService) { }
 
   ngOnInit() {
+    this.mqttService.isConnected$.takeUntil(this.ngUnsubscribe).subscribe(r=>{
+      this.brokerConnected = r;
+    });
+    this.mqttService.isReconnecting$.takeUntil(this.ngUnsubscribe)
+    .subscribe(r=>{
+      this.isReconnecting = r;
+    });
   }
 
   ngOnDestroy() {
@@ -23,12 +31,18 @@ export class TopMenuComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  desconectarBroker() {
-
+  desconectarBroker(){
+    if(this.brokerConnected){
+      this.mqttService.disconnectBroker();  
+    }
+    
   }
 
-  conectarBroker() {
-
+  conectarBroker(){
+    if(!this.brokerConnected){
+      this.mqttService.connectBroker();  
+    }
+    
   }
 
   sair() {
