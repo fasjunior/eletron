@@ -30,7 +30,7 @@ namespace WebAPI.Models
                 D._3tnAddParametro("@qt_consumo", SqlDbType.Decimal, consumo.QtConsumo);
                 #endregion
 
-                D._3tnExecProcedure("[3Tecnos_Eletron].dbo.pd_WebApi_Consumo_Inserir");
+                D._3tnExecProcedure("dbo.pd_WebApi_Consumo_Inserir");
 
                 D.FinalizarTransacao();
             }
@@ -52,7 +52,7 @@ namespace WebAPI.Models
         {
             clsAcessoDados D = new clsAcessoDados();
 
-            DataTable dt = D._3tnGetDataTable("[3Tecnos_Eletron].dbo.pd_WebApi_Consumo_Obter");
+            DataTable dt = D._3tnGetDataTable("dbo.pd_WebApi_Consumo_Obter");
             dt.RenameColumnsToCamelCase();
             return dt;
         }
