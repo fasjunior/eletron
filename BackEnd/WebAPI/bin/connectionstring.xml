@@ -4,7 +4,7 @@
 
 <ConnectionString>
 
-	<value>data source=104.214.112.19;user id=fabiano;password=3tecnos@banco;initial catalog=3Tecnos_Eletron</value>
+	<value>data source=191.232.49.217;user id=3tecnos_user_01;password=3tecnos;initial catalog=3Tecnos_Erbase_01</value>
 
 </ConnectionString>
 
