@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<configuration>
+
+<ConnectionString>
+
+	<value>data source=104.214.112.19;user id=fabiano;password=3tecnos@banco;initial catalog=3Tecnos_Eletron</value>
+
+</ConnectionString>
+
+</configuration>
