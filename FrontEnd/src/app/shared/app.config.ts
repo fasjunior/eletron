@@ -4,8 +4,6 @@ export class AppConfig{
     public static clientID:string       = "eletron";
     public static apiUrl:string         = "http://192.168.88.91:5074/";
     public static topicsMQTT:string[]   = [
-        "eletron/corrente",
-        "eletron/potencia",
         "eletron/energia"
     ];
 }    
